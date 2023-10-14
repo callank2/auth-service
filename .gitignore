@@ -1,0 +1,12 @@
+## Intellij
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+*.class
+*.lst
+
+target/
+
+.mvn/
