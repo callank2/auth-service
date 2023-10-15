@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Profile</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="max-w-lg mx-auto my-10 bg-white rounded-lg shadow-md p-5">
+    <img class="w-32 h-32 rounded-full mx-auto" src="https://picsum.photos/200" alt="Profile picture">
+    <form class="space-y-6" th:action="@{/register}" method="post">
+        <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
+        <input id="name" name="name" type="text" autocomplete="text" class="text-center text-gray-600 mt-1">
+
+        <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
+        <input id="username" name="username" type="text" class="text-center text-gray-600 mt-1">
+
+        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+        <input id="password" name="password" type="password" class="text-center text-gray-600 mt-1">
+
+        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" class="text-center text-gray-600 mt-1">
+
+        <div>
+            <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm
+            font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2
+            focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create Profile</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,6 +1,5 @@
 package com.kevin.auth.service;
 
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.security.core.userdetails.UserDetails;
