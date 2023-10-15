@@ -8,7 +8,6 @@ import static java.util.Collections.EMPTY_LIST;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -60,7 +59,6 @@ public class SetupAdminLoader implements ApplicationListener<ContextRefreshedEve
         alreadySetup = true;
     }
 
-    @Transactional
     User createAdminUserIfNotFound(Set<Role> adminRoles){
         return userRepository.findByUsername(ADMIN_USERNAME).orElse(
                 userRepository.save(User.builder()
@@ -72,21 +70,19 @@ public class SetupAdminLoader implements ApplicationListener<ContextRefreshedEve
         );
     }
 
-    @Transactional
     Privilege createPrivilegeIfNotFound(String name) {
         return privilegeRepository.findByName(name).orElse(
                 privilegeRepository.save(
-                        new Privilege(name)
+                        new Privilege(name, 0)
                 )
         );
     }
 
-    @Transactional
     Role createRoleIfNotFound(
             String name, Collection<Privilege> privileges) {
         return roleRepository.findByName(name).orElse(
                 roleRepository.save(
-                        new Role(name, privileges)
+                        new Role(name, 0, privileges)
                 )
         );
     }
