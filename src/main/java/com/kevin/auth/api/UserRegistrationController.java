@@ -27,7 +27,7 @@ public class UserRegistrationController {
                                UserRegistrationDTO userDTO) {
         userService.registerUser(userDTO);
         model.addAttribute("username", userDTO.username());
-        model.addAttribute("email", userDTO.email());
-        return "showUser";
+        model.addAttribute("isNewUser", true);
+        return "login";
     }
 }
