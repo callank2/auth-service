@@ -73,7 +73,7 @@ public class SetupAdminLoader implements ApplicationListener<ContextRefreshedEve
     Privilege createPrivilegeIfNotFound(String name) {
         return privilegeRepository.findByName(name).orElse(
                 privilegeRepository.save(
-                        new Privilege(name, 0)
+                        new Privilege(name)
                 )
         );
     }
@@ -82,7 +82,7 @@ public class SetupAdminLoader implements ApplicationListener<ContextRefreshedEve
             String name, Collection<Privilege> privileges) {
         return roleRepository.findByName(name).orElse(
                 roleRepository.save(
-                        new Role(name, 0, privileges)
+                        new Role(name, privileges)
                 )
         );
     }
