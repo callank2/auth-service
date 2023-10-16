@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Users</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<div style="padding-left: 30px; padding-right: 30px;">
+    <ul role="list" class="divide-y divide-gray-100">
+        <li th:each="user: ${users}" class="flex justify-between gap-x-6 py-5">
+            <div class="flex min-w-0 gap-x-4">
+                <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://picsum.photos/200" alt="">
+                <div class="min-w-0 flex-auto">
+                    <p class="text-sm font-semibold leading-6 text-gray-900" th:text="${user.username}"></p>
+                    <p class="mt-1 truncate text-xs leading-5 text-gray-500" th:text="${user.email}"></p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

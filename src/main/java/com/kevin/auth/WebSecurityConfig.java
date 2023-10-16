@@ -1,5 +1,7 @@
 package com.kevin.auth;
 
+import static com.kevin.auth.domain.constants.Roles.ROLE_ADMIN;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -21,6 +23,7 @@ public class WebSecurityConfig {
         http
             .authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/", "/home", "/user/register", "/registration", "/register").permitAll()
+                .requestMatchers("/listUsers").hasAuthority(ROLE_ADMIN)
                 .anyRequest().authenticated()
             )
             .formLogin((form) -> form
