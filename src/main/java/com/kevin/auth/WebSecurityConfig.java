@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import com.kevin.auth.service.UserService;
 
@@ -29,6 +30,7 @@ public class WebSecurityConfig {
             .formLogin((form) -> form
                 .loginPage("/login")
                 .permitAll()
+                .successHandler(authSuccessHandler())
             )
             .csrf(AbstractHttpConfigurer::disable) // TODO - this should not be done in production
             .logout(LogoutConfigurer::permitAll);
@@ -47,5 +49,10 @@ public class WebSecurityConfig {
         provider.setPasswordEncoder(bCryptPasswordEncoder);
         provider.setUserDetailsService(userService);
         return provider;
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler authSuccessHandler(){
+        return new SimpleAuthHandler();
     }
 }
