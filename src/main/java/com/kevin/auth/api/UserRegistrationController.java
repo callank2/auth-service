@@ -25,9 +25,14 @@ public class UserRegistrationController {
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String registerUser(Model model,
                                UserRegistrationDTO userDTO) {
-        userService.registerUser(userDTO);
+        if(!userService.registerUser(userDTO)) return usernameAlreadyExists(model);
         model.addAttribute("username", userDTO.username());
         model.addAttribute("isNewUser", true);
         return "login";
+    }
+
+    private String usernameAlreadyExists(Model model){
+        model.addAttribute("invalidUsername", true);
+        return "createUser";
     }
 }
