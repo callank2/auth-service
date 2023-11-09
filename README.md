@@ -13,7 +13,8 @@ The goal of this project is to create a microservice that handles Users and the 
 - [ ] Handle user session - this should allow for user authentication for other services
 - [ ] Forgot password
 - [ ] Edit user page - including user thumbnail
-- [ ] landing page to redirect to other service
+- [ ] landing page to redirect to other service - home.html
+- [ ] email verification with unique email
 
 # Login Page
 Main Login page is found at http://localhost:8080/login
